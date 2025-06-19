@@ -2,7 +2,7 @@
 
 **Effortless file sharing across your local network**
 
-ShareEase is a lightweight, web-based file sharing application that allows you to easily share files between devices on the same local network. No internet connection required, no data usage, just simple drag-and-drop file sharing with a beautiful, modern interface.
+ShareEase is a lightweight, web-based file sharing application that allows you to easily share files between devices on the same local network. No internet connection required, no data usage, just simple file sharing with a beautiful, modern interface, now with a companion browser extension for one-click access.
 
 ![ShareEase Interface](https://img.shields.io/badge/Interface-Modern%20Web%20UI-blue)
 ![Python](https://img.shields.io/badge/Python-3.7%2B-green)
@@ -18,6 +18,7 @@ ShareEase is a lightweight, web-based file sharing application that allows you t
 - 🗑️ **File Management** - Delete files directly from the web interface
 - 📊 **Upload Progress** - Real-time progress tracking for file uploads
 - 🎨 **Modern UI** - Beautiful, responsive design that works on all devices
+- 🧩 **Browser Extension Companion** - Instantly access your server, view the QR code, and open the share page directly from your browser's toolbar
 - 🔒 **Secure** - Files stay on your local network, never uploaded to the internet
 
 ## 🚀 Quick Start
@@ -31,8 +32,8 @@ ShareEase is a lightweight, web-based file sharing application that allows you t
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/shareease.git
-   cd shareease
+   git clone https://github.com/yourusername/ShareEase.git
+   cd ShareEase
    ```
 
 2. **Install required dependencies**
@@ -42,16 +43,15 @@ ShareEase is a lightweight, web-based file sharing application that allows you t
 
 3. **Run the application**
    ```bash
-   python shareease.py
+   python app.py
    ```
 
 4. **Access the application**
-   - Open your browser and go to the address shown in the terminal
-   - Or scan the QR code displayed on the main page from other devices
+   - The server will start. Keep this terminal window open.
+   - On your computer, open a browser and go to the address shown in the terminal (e.g., http://192.168.1.5:5000 or http://localhost:5000).
+   - From other devices, scan the QR code displayed on the page or use the browser extension.
 
 ## 📦 Dependencies
-
-Create a `requirements.txt` file with the following dependencies:
 
 ```
 Flask==2.3.3
@@ -64,29 +64,50 @@ Pillow==10.0.1
 ### Starting the Server
 
 ```bash
-python shareease.py
+python app.py
 ```
+## 🧩 ShareEase Companion Extension
 
-The application will start and display:
-- Local IP address and port (usually `http://192.168.x.x:5000`)
-- Instructions for connecting other devices
-- QR code for easy mobile access
+For even faster access, ShareEase comes with a companion browser extension.
+
+![popup_Ui](image.png)
+
+
+### Extension Features:
+-   **Server Status Check**: Instantly see if your ShareEase server is online or offline.
+-   **One-Click Access**: Opens your ShareEase page in a new tab.
+-   **Quick QR Code**: Displays the QR code in the popup, so you don't have to open the main page to connect a new device.
+
+### How to Install the Extension:
+
+1.  Open your browser (Google Chrome, Microsoft Edge, etc.).
+2.  Navigate to the extensions management page:
+    -   **Chrome**: `chrome://extensions`
+    -   **Edge**: `edge://extensions`
+3.  Enable **"Developer mode"**. This toggle is usually in the top-right corner.
+4.  Click the **"Load unpacked"** button.
+5.  A file dialog will open. Navigate to and select the `ShareEase` folder inside the project directory.
+6.  The ShareEase Companion icon will appear in your browser's toolbar. Click it to use it!
+
+**Note:** The main `app.py` server must be running for the extension to work.
+
+# 🖥️ Web Interface Usage
 
 ### Connecting Devices
 
-1. **Same Network**: Ensure all devices are connected to the same Wi-Fi network
-2. **Web Browser**: Open a web browser on any device
-3. **Access Methods**:
-   - **QR Code**: Scan the QR code displayed on the main page
-   - **Manual**: Type the IP address shown in the terminal (e.g., `http://192.168.1.100:5000`)
+1.  **Same Network**: Ensure all devices are on the same Wi-Fi network.
+2.  **Web Browser**: Open a web browser on any device.
+3.  **Access Methods**:
+    -   **Extension (Recommended)**: Click the ShareEase Companion icon in your browser.
+    -   **QR Code**: Scan the QR code displayed on the main page or in the extension.
+    -   **Manual**: Type the IP address shown in the terminal (e.g., `http://192.168.x.x:5000`).
 
 ### Sharing Files
 
-1. **Upload**: Click "Choose File to Share" or drag and drop files
-2. **Progress**: Watch real-time upload progress
-3. **Access**: Files appear in the "Available Files" section
-4. **Download**: Other devices can download files with one click
-5. **Manage**: Delete files when no longer needed
+1.  **Upload**: Click "Choose File to Share" or drag and drop a file onto the page.
+2.  **Progress**: Watch the real-time upload progress bar.
+3.  **Access**: The file will immediately appear in the "Available Files" list for all connected devices.
+4.  **Manage**: Download or delete files as needed.
 
 ## 📱 Device Support
 
@@ -140,15 +161,17 @@ The application automatically detects your local IP address and generates a QR c
 
 ### Common Issues
 
-**Can't connect from other devices?**
-- Ensure all devices are on the same Wi-Fi network
-- Check if firewall is blocking the connection
-- Verify the IP address is correct
+-   **Can't connect from other devices?**
+    -   Ensure all devices are on the **same Wi-Fi network**. This is the most common issue.
+    -   Check if a firewall is blocking the connection to the port (e.g., 5000).
+    -   Verify the IP address is correct.
 
-**Upload fails?**
-- Check available disk space
-- Verify file size is under the limit (16GB default)
-- Ensure the upload folder has write permissions
+-   **Upload fails?**
+    -   Check if you have enough disk space on the server machine.
+    -   Verify the file size is under the configured limit (16GB default).
+
+-   **Browser Extension shows 'Server Offline'?**
+    -   Make sure you have started the Python server by running `python app.py` in your terminal. The extension can only connect to a running server.
 
 **QR code not working?**
 - Make sure your camera app or QR scanner is working
@@ -199,9 +222,5 @@ If you encounter any issues or have questions, please:
 1. Check the [Troubleshooting](#-troubleshooting) section
 2. Search existing [Issues](https://github.com/yourusername/shareease/issues)
 3. Create a new issue if your problem isn't covered
-
----
-
-**Made with ❤️ for easy file sharing**
 
 *ShareEase - Because sharing files shouldn't be complicated!*
