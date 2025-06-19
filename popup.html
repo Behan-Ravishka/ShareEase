@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShareEase Status</title>
+    <style>
+        body {
+            width: 280px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 15px;
+        }
+        .container { text-align: center; }
+        .header { margin-bottom: 15px; }
+        .logo { font-size: 1.8rem; font-weight: 700; background: linear-gradient(45deg, #4A90E2, #50E3C2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .status { font-size: 0.9rem; padding: 5px 10px; border-radius: 5px; font-weight: 600; display: inline-block; margin-bottom: 15px; }
+        .status.online { background-color: #50E3C2; color: #1a1a2e; }
+        .status.offline { background-color: #e74c3c; color: white; }
+        .qr-code-box { background: white; padding: 10px; border-radius: 8px; display: inline-block; line-height: 0; margin-bottom: 15px; height: 150px; }
+        .qr-code-box img { width: 150px; height: 150px; }
+        #error-message { color: #a0a0c0; font-size: 0.8rem; }
+        .action-btn { display: block; width: 100%; padding: 10px; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background-color 0.2s; background-color: #4A90E2; color: white; text-decoration: none; align-:center;}
+        .action-btn:disabled { background-color: #555; cursor: not-allowed; }
+        .action-btn:hover:not(:disabled) { background-color: #3a7bbd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">ShareEase</h1>
+        </div>
+        
+        <!-- Status will be updated by JS -->
+        <div id="status-indicator" class="status offline">Checking...</div>
+
+        <!-- QR Code will be loaded by JS -->
+        <div class="qr-code-box" id="qr-container" style="display: none;">
+            <img id="qr-image" src="" alt="QR Code">
+        </div>
+
+        <!-- Error message for when server is offline -->
+        <p id="error-message">Starting server...</p>
+
+        <!-- Button will be enabled by JS -->
+        <a href="#" id="open-shareease-btn" class="action-btn" target="_blank" disabled>Open ShareEase</a>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
