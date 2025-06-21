@@ -70,8 +70,8 @@ python app.py
 
 For even faster access, ShareEase comes with a companion browser extension.
 
-![popup_Ui](image.png)
-
+![image](https://github.com/user-attachments/assets/ec09c32a-aa19-4eed-ac96-d2766a5bd4df)
+![Screenshot_20-6-2025_3647_192 168 79 211](https://github.com/user-attachments/assets/52c599be-01d1-49ae-bc33-5cc99ed20d71)
 
 ### Extension Features:
 -   **Server Status Check**: Instantly see if your ShareEase server is online or offline.
