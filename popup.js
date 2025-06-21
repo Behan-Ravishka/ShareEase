@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Try to fetch the status from the server. 
-    // We check localhost first as it's the most common address.
     fetch('http://localhost:5000/api/status')
         .then(response => {
             if (!response.ok) {
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add a click listener to the button to close the popup after clicking
     openBtn.addEventListener('click', () => {
         if (!openBtn.disabled) {
-            window.close(); // Closes the popup window
+            window.close();
         }
     });
 });

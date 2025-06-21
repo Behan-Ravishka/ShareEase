@@ -4,7 +4,7 @@ import io
 import base64
 from flask import Flask, request, send_from_directory, redirect, url_for, render_template_string, jsonify
 
-# --- NEW: Import libraries for QR Code generation ---
+#Import libraries for QR Code generation 
 import qrcode
 from PIL import Image
 
@@ -29,7 +29,7 @@ def get_ip_address():
     except Exception:
         return "127.0.0.1"
 
-# --- NEW: Helper function to generate QR code ---
+# Helper function to generate QR code 
 def generate_qr_code(data):
     """Generates a QR code and returns it as a base64 encoded string."""
     qr = qrcode.QRCode(
@@ -50,7 +50,7 @@ def generate_qr_code(data):
     # Encode to base64
     return base64.b64encode(byte_im).decode('utf-8')
 
-# --- HTML, CSS, and JS Template with New Features ---
+# --- HTML Template ---
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
@@ -216,8 +216,6 @@ HTML_TEMPLATE = """
             </ul>
         </section>
     </div>
-
-    <!-- --- NEW: JavaScript for Async Upload and Progress --- -->
     <script>
         const uploadForm = document.getElementById('upload-form');
         const fileInput = document.getElementById('file');
@@ -328,7 +326,7 @@ def api_status():
         'qr_code_base64': qr_code_data
     })
 
-# --- NEW: Dedicated route for asynchronous uploads ---
+# Dedicated route for asynchronous uploads
 @app.route('/upload', methods=['POST'])
 def upload_file_async():
     """Handles the asynchronous file upload."""
@@ -348,7 +346,7 @@ def download_file(filename):
     """Serves files for download."""
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
-# --- NEW: Route for deleting files ---
+# Route for deleting files
 @app.route('/delete/<path:filename>', methods=['POST'])
 def delete_file(filename):
     """Handles file deletion."""
@@ -357,7 +355,7 @@ def delete_file(filename):
         if os.path.exists(file_path):
             os.remove(file_path)
         else:
-            # Optionally, you can add flash messaging to show an error if file not found
+            print(f"File {filename} does not exist.")
             pass
     except Exception as e:
         # Log the error, maybe show an error page
